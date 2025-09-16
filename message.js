@@ -29,3 +29,26 @@ if (logoutBtn) {
     window.location.href = 'index.html';
   });
 }
+
+function getTime(){
+  let date=new Date();
+  let year =date.getFullYear();
+  let month =date.getMonth()+1;
+  let day =date.getDate();
+  let hour =date.getHours();
+  let minute =date.getMinutes();
+  let second =date.getSeconds();
+  let  yearshow=document.getElementById('year');
+  yearshow.innerHTML=year;
+  let monthshow=document.getElementById('month');
+  monthshow.innerHTML=month+'月';
+  let dayshow=document.getElementById('date');
+  dayshow.innerHTML=day+'日';
+  let hourshow=document.getElementById('hours');
+  hourshow.innerHTML=hour+'时';
+  let minuteshow=document.getElementById('minutes');
+  minuteshow.innerHTML=minute+'分';
+  let secondshow=document.getElementById('seconds');
+  secondshow.innerHTML=second+'秒';
+}
+setInterval(getTime, 1000);

@@ -30,25 +30,40 @@ if (logoutBtn) {
   });
 }
 
-function getTime(){
-  let date=new Date();
-  let year =date.getFullYear();
-  let month =date.getMonth()+1;
-  let day =date.getDate();
-  let hour =date.getHours();
-  let minute =date.getMinutes();
-  let second =date.getSeconds();
-  let  yearshow=document.getElementById('year');
-  yearshow.innerHTML=year;
-  let monthshow=document.getElementById('month');
-  monthshow.innerHTML=month+'月';
-  let dayshow=document.getElementById('date');
-  dayshow.innerHTML=day+'日';
-  let hourshow=document.getElementById('hours');
-  hourshow.innerHTML=hour+'时';
-  let minuteshow=document.getElementById('minutes');
-  minuteshow.innerHTML=minute+'分';
-  let secondshow=document.getElementById('seconds');
-  secondshow.innerHTML=second+'秒';
+function getTime() {
+  let date = new Date();
+  let year = date.getFullYear();
+  let month = date.getMonth() + 1;
+  let day = date.getDate();
+  let hour = date.getHours();
+  let minute = date.getMinutes();
+  let second = date.getSeconds();
+  const clock = document.querySelector('.clock');
+  if (clock) {
+    // 生成内容
+    const timeStr = `${hour < 10 ? '0' + hour : hour}:${minute < 10 ? '0' + minute : minute}:${second < 10 ? '0' + second : second}`;
+    const dateStr = `${year}年${month}月${day}日`;
+
+    // 如果没有 .time/.date 元素则创建
+    if (!clock.querySelector('.time')) {
+      clock.innerHTML = `<span class="time">${timeStr}</span><span class="date">${dateStr}</span>`;
+    } else {
+      // 更新内容并重置动画
+      const timeElem = clock.querySelector('.time');
+      const dateElem = clock.querySelector('.date');
+      if (timeElem.innerText !== timeStr) {
+        timeElem.innerText = timeStr;
+        timeElem.style.animation = 'none';
+        void timeElem.offsetWidth; // 触发重绘
+        timeElem.style.animation = '';
+      }
+      if (dateElem.innerText !== dateStr) {
+        dateElem.innerText = dateStr;
+        dateElem.style.animation = 'none';
+        void dateElem.offsetWidth;
+        dateElem.style.animation = '';
+      }
+    }
+  }
 }
 setInterval(getTime, 1000);

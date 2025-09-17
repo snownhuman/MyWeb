@@ -117,7 +117,9 @@ button:hover {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-left: 20px;
+  left: 20px;
+  top: 100px;
+  margin-left: 0;
 }
 
 @keyframes flip {
@@ -141,4 +143,16 @@ button:hover {
   backface-visibility: hidden;
   /* 可选：更立体的效果 */
   perspective: 200px;
+}
+
+.neirong {
+  background-image: url(./img/162311-1757060591ce66.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-color: rgba(255, 255, 255, 0.7);
+  /* 半透明白色叠加 */
+  background-blend-mode: lighten;
+  height: 2000px;
+  color: black;
 }
